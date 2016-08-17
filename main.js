@@ -45,7 +45,9 @@ function generateSketch(value){
   });
   $('.sketch').mouseleave(function(event){
     var sketch = event.target;
-    sketch.style.backgroundColor = "white";
+    setTimeout(function(){
+      sketch.style.backgroundColor = "white";
+    }, 2000);
   });
 }
 
