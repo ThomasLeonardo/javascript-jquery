@@ -1,0 +1,39 @@
+body{
+  background-color: lightblue;
+}
+
+div{
+  display: inline-block;
+}
+
+#container{
+  background-color: white;
+  margin-bottom: 150px;
+}
+
+#page{
+  width: 100%;
+  text-align: center;
+}
+
+.sketch{
+  width: 60px;
+  height: 60px;
+}
+
+
+#createGrid{
+  padding: 20px;
+  margin: 30px
+}
+
+#top{
+  display: block;
+  clear: both;
+  margin-bottom: 30px;
+}
+#size{
+  color: white;
+  background-color: black;
+  padding: 10px 40px 10px 40px;
+}
