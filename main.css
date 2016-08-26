@@ -3,12 +3,22 @@ body{
 }
 
 div{
-  display: inline-block;
+  vertical-align: top;
+}
+
+br{
+  margin: 0;
 }
 
 #container{
   background-color: white;
-  margin-bottom: 150px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  width: 960px;
+  height: 960px;
+  max-width: 960px;
+  max-height: 960px;
+  display: inline-block;
 }
 
 #page{
@@ -17,23 +27,29 @@ div{
 }
 
 .sketch{
+  display: inline-block;
   width: 60px;
   height: 60px;
+  margin: 0;
 }
 
+.line{
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.buttons{
+  padding: 20px;
+  margin: 0px 10px 20px 10px;
+  width: 160px;
+  position: absolute;
+  left: 10px;
+}
 
 #createGrid{
-  padding: 20px;
-  margin: 30px
+  top: 300px;
 }
-
-#top{
-  display: block;
-  clear: both;
-  margin-bottom: 30px;
-}
-#size{
-  color: white;
-  background-color: black;
-  padding: 10px 40px 10px 40px;
+#changeFade{
+  top: 380px;
 }
