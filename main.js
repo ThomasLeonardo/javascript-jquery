@@ -1,4 +1,4 @@
-var container = document.getElementById("container");
+var container = $(".sub-container")[0];
 
 generateSketch(16);
 
@@ -37,10 +37,7 @@ function generateSketch(value){
   var lineDiv = document.createElement("DIV");
   var div = document.createElement("DIV");
   lineDiv.className = "line";
-  lineDiv.style.maxHeight = sqSize;
-  div.className = "sketch";
-  div.style.width = sqSize;
-  div.style.height = sqSize;
+  div.className = "small-cubes";
   for (var i = 0; i < value; i++) {
       var current = div.cloneNode(true);
       lineDiv.appendChild(current);
@@ -48,25 +45,25 @@ function generateSketch(value){
   for(var i = 0; i < value ; i++){
     var line = lineDiv.cloneNode(true);
     for (var j = 0; j < value; j++) {
-        line.children[j].id = ((i * value) + j);
-      }
+      line.children[j].id = ((i * value) + j);
+    }
     container.appendChild(line);
   }
-  $('.sketch').mouseenter(function(event){
-    var sketch = event.target;
-    timeoutObserver(sketch);
-    change_color(sketch);
+  $('.small-cubes').mouseenter(function(event){
+    var cube = event.target;
+    checkTimeout(cube);
+    change_color(cube);
   });
-  $('.sketch').mouseleave(function(event){
-    var sketch = event.target;
-    timeouts[sketch.id] = setTimeout(function(){
-      sketch.style.backgroundColor = "white";
+  $('.small-cubes').mouseleave(function(event){
+    var cube = event.target;
+    timeouts[cube.id] = setTimeout(function(){
+      cube.style.backgroundColor = "white";
     }, fadeTime);
 
   });
-  $(".sketch").click(function(event){
-    var sketch = event.target;
-    change_color(sketch);
+  $(".small-cubes").click(function(event){
+    var cube = event.target;
+    change_color(cube);
   });
 }
 
@@ -82,7 +79,7 @@ function change_color(target){
     colors['b']+")";
 }
 
-function timeoutObserver(target){
+function checkTimeout(target){
   if(!(typeof timeouts[target.id] === "undefined"))
   {
     clearTimeout(timeouts[target.id]);

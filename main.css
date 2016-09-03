@@ -1,13 +1,11 @@
 body{
   background-color: lightblue;
+  text-align: center;
 }
 
 div{
-  vertical-align: top;
-}
-
-br{
-  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #container{
@@ -16,40 +14,37 @@ br{
   margin-top: 40px;
   width: 960px;
   height: 960px;
-  max-width: 960px;
-  max-height: 960px;
-  display: inline-block;
 }
 
-#page{
+.sub-container{
+  display: table;
   width: 100%;
-  text-align: center;
-}
-
-.sketch{
-  display: inline-block;
-  width: 60px;
-  height: 60px;
-  margin: 0;
+  height: 100%;
 }
 
 .line{
-  padding: 0;
-  margin: 0;
-  text-align: left;
+  display: table-row;
+}
+
+.small-cubes{
+  display: table-cell;
 }
 
 .buttons{
+  float: left;
+  margin-right: 10px;
+}
+
+.button{
   padding: 20px;
-  margin: 0px 10px 20px 10px;
   width: 160px;
-  position: absolute;
-  left: 10px;
+  display: inline-block;
+  margin-top: 40px
 }
 
 #createGrid{
-  top: 300px;
+
 }
 #changeFade{
-  top: 380px;
+
 }
