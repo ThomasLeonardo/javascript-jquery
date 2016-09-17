@@ -20,7 +20,7 @@ $("#changeFade").click(function(){
 });
 
 button.addEventListener("click", function(){
-  var value = prompt("Current: "+squares+"\nHow many squares per side?");
+  var value = prompt("Current: "+squares);
 
   if(value != null){
     if(!isNaN(value)){
