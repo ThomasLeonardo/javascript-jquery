@@ -2,7 +2,7 @@ var container = $(".sub-container")[0];
 
 generateSketch(16);
 
-var button = document.getElementById("createGrid");
+var cubes = document.getElementById("createGrid");
 var size = document.getElementById("size");
 var squares = 16;
 var fadeTime = 2000;
@@ -19,7 +19,7 @@ $("#changeFade").click(function(){
   }
 });
 
-button.addEventListener("click", function(){
+cubes.addEventListener("click", function(){
   var value = prompt("Current: "+squares);
 
   if(value != null){
@@ -33,7 +33,6 @@ button.addEventListener("click", function(){
 });
 
 function generateSketch(value){
-  var sqSize = 960.0/value + "px";
   var lineDiv = document.createElement("DIV");
   var div = document.createElement("DIV");
   lineDiv.className = "line";
