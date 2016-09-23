@@ -51,7 +51,7 @@ function generateSketch(value){
   $('.small-squares').mouseenter(function(event){
     var square = event.target;
     checkTimeout(square);
-    change_color(square);
+    changeColor(square);
   });
   $('.small-squares').mouseleave(function(event){
     var square = event.target;
@@ -61,10 +61,10 @@ function generateSketch(value){
     var square = event.target;
     var squareId = square.id;
     for(var i = 0; i < ~~(numSquares / 10); i++){
-      var otherSquareId = ~~(parseInt(squareId) + Math.random() * (numSquares ** 2 / 2) - numSquares ** 2 / 4);
+      var otherSquareId = 1 + ~~(parseInt(squareId) + Math.random() * (numSquares ** 2 / 2) - numSquares ** 2 / 4);
       if(otherSquareId > 0 && otherSquareId < numSquares ** 2){
         var otherSquare = document.getElementById(otherSquareId)
-        change_color(otherSquare)
+        changeColor(otherSquare)
         checkTimeout(otherSquare)
         makeTimeout(otherSquare)
       }
@@ -81,7 +81,7 @@ function makeTimeout(square){
     }, fadeTime);
 }
 
-function change_color(target){
+function changeColor(target){
   var golden_ratio_conjugate = 0.618033988749895;
   var h = Math.random();
   h += golden_ratio_conjugate;
