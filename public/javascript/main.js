@@ -66,6 +66,7 @@ function generateSketch(value){
       if(otherSquareId > 0 && otherSquareId < numSquares ** 2){
         var otherSquare = document.getElementById(otherSquareId)
         change_color(otherSquare)
+        checkTimeout(otherSquare)
         makeTimeout(otherSquare)
       }
       else{
