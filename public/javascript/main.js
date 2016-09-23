@@ -2,9 +2,9 @@ var container = $(".sub-container")[0];
 
 generateSketch(16);
 
-var cubes = document.getElementById("createGrid");
+var squares = document.getElementById("createGrid");
 var size = document.getElementById("size");
-var squares = 16;
+var numSquares = 16;
 var fadeTime = 2000;
 var timeouts={};
 $("#changeFade").click(function(){
@@ -19,12 +19,12 @@ $("#changeFade").click(function(){
   }
 });
 
-cubes.addEventListener("click", function(){
-  var value = prompt("Current: "+squares);
+squares.addEventListener("click", function(){
+  var value = prompt("Current: " + numSquares);
 
   if(value != null){
     if(!isNaN(value)){
-      squares = value;
+      numSquares = value;
       value = Math.floor(+value);
       container.innerHTML = "";
       generateSketch(value);
@@ -36,34 +36,49 @@ function generateSketch(value){
   var lineDiv = document.createElement("DIV");
   var div = document.createElement("DIV");
   lineDiv.className = "line";
-  div.className = "small-cubes";
+  div.className = "small-squares";
   for (var i = 0; i < value; i++) {
       var current = div.cloneNode(true);
       lineDiv.appendChild(current);
   }
   for(var i = 0; i < value ; i++){
     var line = lineDiv.cloneNode(true);
-    for (var j = 0; j < value; j++) {
+    for(var j = 0; j < value; j++){
       line.children[j].id = ((i * value) + j);
     }
     container.appendChild(line);
   }
-  $('.small-cubes').mouseenter(function(event){
-    var cube = event.target;
-    checkTimeout(cube);
-    change_color(cube);
+  $('.small-squares').mouseenter(function(event){
+    var square = event.target;
+    checkTimeout(square);
+    change_color(square);
   });
-  $('.small-cubes').mouseleave(function(event){
-    var cube = event.target;
-    timeouts[cube.id] = setTimeout(function(){
-      cube.style.backgroundColor = "white";
-    }, fadeTime);
+  $('.small-squares').mouseleave(function(event){
+    var square = event.target;
+    makeTimeout(square)
+  });
+  $(".small-squares").click(function(event){
+    var square = event.target;
+    var squareId = square.id;
+    console.log(numSquares / 10)
+    for(var i = 0; i < ~~(numSquares / 10); i++){
+      var otherSquareId = ~~(parseInt(squareId) + Math.random() * (numSquares ** 2 / 2) - numSquares ** 2 / 4);
+      if(otherSquareId > 0 && otherSquareId < numSquares ** 2){
+        var otherSquare = document.getElementById(otherSquareId)
+        change_color(otherSquare)
+        makeTimeout(otherSquare)
+      }
+      else{
+        i--;
+      }
+    }
+  });
+}
 
-  });
-  $(".small-cubes").click(function(event){
-    var cube = event.target;
-    change_color(cube);
-  });
+function makeTimeout(square){
+  timeouts[square.id] = setTimeout(function(){
+      square.style.backgroundColor = "white";
+    }, fadeTime);
 }
 
 function change_color(target){
