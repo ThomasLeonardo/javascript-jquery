@@ -61,7 +61,7 @@ function generateSketch(value){
     var square = event.target;
     var squareId = square.id;
     for(var i = 0; i < ~~(numSquares / 10) + 1; i++){
-      var otherSquareId =  ~~(parseInt(squareId) + Math.random() * (numSquares ** 2 / 2) - numSquares ** 2 / 4);
+      var otherSquareId =  ~~(parseInt(squareId) + Math.random() * (numSquares ** 3 / 2) - numSquares ** 3 / 4);
       if(otherSquareId > 0 && otherSquareId < numSquares ** 2){
         var otherSquare = document.getElementById(otherSquareId)
         changeColor(otherSquare)
