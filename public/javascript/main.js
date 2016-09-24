@@ -1,6 +1,7 @@
 var container = $(".sub-container")[0];
 
 generateSketch(16);
+var interval;
 
 var squares = document.getElementById("createGrid");
 var size = document.getElementById("size");
@@ -57,22 +58,28 @@ function generateSketch(value){
     var square = event.target;
     makeTimeout(square)
   });
-  $(".small-squares").click(function(event){
+  $(".small-squares").mousedown(function(event){
     var square = event.target;
     var squareId = square.id;
-    for(var i = 0; i < ~~(numSquares / 10) + 1; i++){
-      var otherSquareId =  ~~(parseInt(squareId) + Math.random() * (numSquares ** 3 / 2) - numSquares ** 3 / 4);
-      if(otherSquareId > 0 && otherSquareId < numSquares ** 2){
-        var otherSquare = document.getElementById(otherSquareId)
-        changeColor(otherSquare)
-        checkTimeout(otherSquare)
-        makeTimeout(otherSquare)
+    interval = setInterval(function(){
+      for(var i = 0; i < ~~(numSquares / 10) + 1; i++){
+        var otherSquareId =  ~~(parseInt(squareId) + Math.random() * (numSquares ** 3 / 3) - numSquares ** 3 / 4);
+        if(otherSquareId > 0 && otherSquareId < numSquares ** 2){
+          var otherSquare = document.getElementById(otherSquareId)
+          changeColor(otherSquare)
+          checkTimeout(otherSquare)
+          makeTimeout(otherSquare)
+        }
+        else{
+          i--;
+        }
       }
-      else{
-        i--;
-      }
-    }
+    }, 50);
+
   });
+  $(".small-squares").mouseup(function(){
+    clearInterval(interval);
+  })
 }
 
 function makeTimeout(square){
