@@ -1,4 +1,7 @@
 var container = $(".sub-container")[0];
+container.onmouseleave =function(){
+  clearInterval(interval);
+};
 
 generateSketch(16);
 var interval;
@@ -59,6 +62,7 @@ function generateSketch(value){
     makeTimeout(square)
   });
   $(".small-squares").mousedown(function(event){
+    clearInterval(interval)
     var square = event.target;
     var squareId = square.id;
     interval = setInterval(function(){
